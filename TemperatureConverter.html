@@ -3,7 +3,7 @@
 <head>
     <title>Temperature Converter</title>
     <style>
-        body{
+        body {
             margin: 0;
             padding: 0;
             background-color: cadetblue;
@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
         }
-        .container{
+        .container {
             display: flex;
             flex-direction: column;
             height: 350px;
@@ -22,36 +22,41 @@
             border: 2px solid #004d4d;
             background-color: #006666;
         }
-        .heading{
+        .heading {
             color: #fff;
             text-align: center;
             padding-top: 10px;
             font-size: 40px;
         }
-        .text{
+        .text {
             font-size: 20px;
             color: #fff;
             text-align: center;
         }
-        span{
+        span {
             font-size: 20px;
             color: #fff;
             text-align: center;
+        }
+        .message {
+            color: #ffcc00; 
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="main_container"></div>
+    <div class="main_container">
         <div class="container">
             <h1 class="heading">Temperature Converter</h1>
             <p class="text">Your entered temperature is : <span id="entered-temp"></span></p>
             <p class="text">Your entered Unit is : <span id="entered-unit"></span></p>
-            <p class="text"> is equal to <span id="converted-temp"></span></p>
+            <p class="text">The result is : <span id="converted-temp"></span></p>
+            <p class="message" id="message"></p>
         </div>
     </div>
-
     <script>
-
         function celsiusToFahrenheit(celsius) {
             return (celsius * 9 / 5) + 32;
         }
@@ -63,24 +68,35 @@
         const enteredTempElement = document.getElementById("entered-temp");
         const enteredUnitElement = document.getElementById("entered-unit");
         const convertedTempElement = document.getElementById("converted-temp");
+        const messageElement = document.getElementById("message"); 
 
         let temperature = parseFloat(prompt("Enter a temperature:"));
         let unit = prompt("Enter the unit (C for Celsius, F for Fahrenheit):").toUpperCase();
 
         enteredTempElement.textContent = temperature;
         enteredUnitElement.textContent = unit;
-        
+
         if (unit === 'C') {
             let convertedTemp = celsiusToFahrenheit(temperature);
-            alert(`${temperature}°C is equal to ${convertedTemp.toFixed(1)}°F`);
+            let resultMessage = `${temperature}°C is equal to ${convertedTemp.toFixed(1)}°F`;
+            alert(resultMessage); 
+            convertedTempElement.textContent = resultMessage; 
+            messageElement.textContent = ""; 
         } 
         else if (unit === 'F') {
             let convertedTemp = fahrenheitToCelsius(temperature);
-            alert(`${temperature}°F is equal to ${convertedTemp.toFixed(1)}°C`);
+            let resultMessage = `${temperature}°F is equal to ${convertedTemp.toFixed(1)}°C`;
+            alert(resultMessage); 
+            convertedTempElement.textContent = resultMessage; 
+            messageElement.textContent = ""; 
         } 
         else {
-            alert("Invalid unit entered. Please enter 'C' for Celsius or 'F' for Fahrenheit.");
-        }  
+            convertedTempElement.textContent = ""; 
+            let errorMessage = "Invalid unit entered. Please enter 'C' for Celsius or 'F' for Fahrenheit.";
+            alert(errorMessage); 
+            messageElement.textContent = errorMessage;
+        }
+
     </script>
 </body>
 </html>
