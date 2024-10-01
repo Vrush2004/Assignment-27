@@ -4,23 +4,42 @@
     <title>Temperature Converter</title>
 </head>
 <body>
+    <div class="main_container"></div>
+        <div class="container">
+            <h1 class="heading">Temperature Converter</h1>
+            <p class="text">Your entered temperature is : <span id="entered-temp"></span></p>
+            <p class="text">Your entered Unit is : <span id="entered-unit"></span></p>
+            <p class="text"> is equal to <span id="converted-temp"></span></p>
+        </div>
+    </div>
+
     <script>
+
         function celsiusToFahrenheit(celsius) {
             return (celsius * 9 / 5) + 32;
         }
+
         function fahrenheitToCelsius(fahrenheit) {
             return (fahrenheit - 32) * 5 / 9;
         }
+
+        const enteredTempElement = document.getElementById("entered-temp");
+        const enteredUnitElement = document.getElementById("entered-unit");
+        const convertedTempElement = document.getElementById("converted-temp");
+
         let temperature = parseFloat(prompt("Enter a temperature:"));
         let unit = prompt("Enter the unit (C for Celsius, F for Fahrenheit):").toUpperCase();
 
+        enteredTempElement.textContent = temperature;
+        enteredUnitElement.textContent = unit;
+        
         if (unit === 'C') {
             let convertedTemp = celsiusToFahrenheit(temperature);
-            alert(`${temperature}°C is equal to ${convertedTemp}°F`);
+            alert(`${temperature}°C is equal to ${convertedTemp.toFixed(1)}°F`);
         } 
         else if (unit === 'F') {
             let convertedTemp = fahrenheitToCelsius(temperature);
-            alert(`${temperature}°F is equal to ${convertedTemp}°C`);
+            alert(`${temperature}°F is equal to ${convertedTemp.toFixed(1)}°C`);
         } 
         else {
             alert("Invalid unit entered. Please enter 'C' for Celsius or 'F' for Fahrenheit.");
