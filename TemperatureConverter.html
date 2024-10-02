@@ -28,14 +28,19 @@
             padding-top: 10px;
             font-size: 40px;
         }
+        img{
+            height: 40px;
+        }
         .text {
             font-size: 20px;
-            color: #fff;
+            color: rgb(121, 212, 215);
             text-align: center;
+            font-weight: 600;
         }
         span {
+            font-weight: 700;
             font-size: 20px;
-            color: #fff;
+            color: #F7D148;
             text-align: center;
         }
         .message {
@@ -49,10 +54,10 @@
 <body>
     <div class="main_container">
         <div class="container">
-            <h1 class="heading">Temperature Converter</h1>
-            <p class="text">Your entered temperature is : <span id="entered-temp"></span></p>
-            <p class="text">Your entered Unit is : <span id="entered-unit"></span></p>
-            <p class="text">The result is : <span id="converted-temp"></span></p>
+            <h1 class="heading">Temperature Converter <img src="./images/temperature-indicator.png" alt=""></h1>
+            <p class="text">Your entered temperature is : &nbsp;<span id="entered-temp"></span></p>
+            <p class="text">Your entered Unit is :  &nbsp;<span id="entered-unit"></span></p>
+            <p class="text">The result is :  &nbsp;<span id="converted-temp"></span></p>
             <p class="message" id="message"></p>
         </div>
     </div>
